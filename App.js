@@ -6,7 +6,7 @@ import {StatusBar} from 'react-native';
 const App = ()=>{
   return(
     <NavigationContainer>
-      <StatusBar barStyle="lite-content" backgroundColor={'#2e4052'} />
+      <StatusBar barStyle="dark-content" backgroundColor={'#fff'} />
       <HomeStackNavigator/>
     </NavigationContainer>
   )

@@ -20,12 +20,10 @@ const ItemRows = ({ item }) => {
 
     return (
         <View style={styles.rows}>
-            <TouchableOpacity >
             
                <View style={{
                 flexDirection: 'row',
-                justifyContent: 'space-around'
-            }}>
+                justifyContent: 'space-around'}}>
                 <View>
                     <Image
                         source={{
@@ -38,37 +36,38 @@ const ItemRows = ({ item }) => {
                     <Text style={styles.countryName}>{item.Country}</Text>
                 </View>
                 <View style={{alignItems:'center'}}>
-                    <Text style={styles.totalCasesName}>TotalConfirmed</Text>
-                    <Text style={{...styles.totalCases,color:'#D93B4A'}}>{item.TotalConfirmed}</Text>
+                    <Text style={styles.totalCasesName}>Confirmed</Text>
+                    <Text style={{...styles.totalCases,color:'#D93B4A'}}>+ {item.TotalConfirmed}</Text>
                 </View>
             </View>
         
-            </TouchableOpacity>
-             </View>
+            </View>
     );
 }
 
 const styles = StyleSheet.create({
     rows: {
-        width: '100%',
+        width: '90%',
         marginTop: 10,
         marginBottom: 8,
-        padding: 10
+        padding: 10,
+        backgroundColor:"#ffb3b3",
+        alignSelf: "center",
+        borderRadius: 8,
+        elevation: 5,
     },
     countryName: {
         fontSize: 15,
-        color:'#fff',
+        color:'#000',
         fontWeight: 'bold'
     },
     totalCasesName: {
-        fontSize: 12,
-        color:'#b8b8aa',
-        fontWeight: 'bold',
+        fontSize: 10,
+        color:'#404040',
         marginTop: 5
     },
     totalCases: {
         fontSize: 10,
-        color:'#b8b8aa',
         fontWeight: 'bold',
         marginTop: 5
     },
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
         height: 30,
         width: 40,
         padding: 10, 
-        borderRadius: 15
+        borderRadius: 5
     }
 });
 

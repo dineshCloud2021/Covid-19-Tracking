@@ -14,32 +14,23 @@ export default class Cards extends Component {
             <View style={{
                 ...styles.container,
                 backgroundColor: this.props.bg,
-                marginRight: this.props.title === 'Deaths' ? 20:0,
+                marginRight: this.props.title === 'New Recovered' ? 20:0,
+                alignSelf: this.props.title === 'New Deaths' ? "center": "flex-start",
             }}>
                 <View  style={
-                            [styles.line,this.props.title === 'Total Cases' ? styles.totalLine :
-                                this.props.title === 'Recovered' ? styles.recoverLine :
+                            [styles.line,this.props.title === 'New Cases' ? styles.totalLine :
+                                this.props.title === 'New Recovered' ? styles.recoverLine :
                                 styles.deathLine]
                             }>
                     <Text></Text>
                 </View>
 
-                <View style={{padding:10}}>
-                    <Ionicons
-                        name={this.props.icon}
-                        size={30}
-                        style={
-                            [styles.icon,this.props.title === 'Total Cases' ? styles.totalNum :
-                                this.props.title === 'Recovered' ? styles.recoverNum :
-                                styles.deathNum]
-                            }
-                    />
-                
+                <View style={{padding:10,alignSelf:"center"}}>
                     <Text style={{...styles.title}}>{this.props.title}</Text>
                 
                     <Text style={
-                        [styles.number,this.props.title === 'Total Cases' ? styles.totalNum :
-                            this.props.title === 'Recovered' ? styles.recoverNum :
+                        [styles.number,this.props.title === 'New Cases' ? styles.totalNum :
+                            this.props.title === 'New Recovered' ? styles.recoverNum :
                             styles.deathNum]
                         }>
                         +{this.props.number}
@@ -55,17 +46,17 @@ export default class Cards extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height: 160,
+        height:75,
         width: 130,
         borderRadius: 30,
         marginLeft: 20,
         elevation: 5,
         margin:10,
-        overflow:'hidden'
+        overflow:'hidden',
     },
     line: {
         width: '100%',
-        height: 12
+        height: 8
     },
     totalLine: {
         backgroundColor: '#ff3333'
@@ -76,16 +67,13 @@ const styles = StyleSheet.create({
     deathLine: {
         backgroundColor: '#ff721d'
     },
-    icon: {
-        marginTop:8
-    },
     title: {
-        marginTop: 20,
+        marginTop: 0,
         fontWeight: "bold",
         fontSize: 10
     },
     number: {
-        marginTop: 15,
+        marginTop: 5,
         fontWeight: "bold",
         fontSize: 15,
     },

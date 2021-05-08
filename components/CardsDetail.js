@@ -16,7 +16,7 @@ export default class Cards extends Component {
                 backgroundColor: this.props.bg,
                 marginRight: this.props.title === 'Deaths' ? 20:0,
             }}>
-                <View  style={
+                <View style={
                             [styles.line,this.props.title === 'Total Cases' ? styles.totalLine :
                                 this.props.title === 'Recovered' ? styles.recoverLine :
                                 styles.deathLine]
@@ -24,7 +24,10 @@ export default class Cards extends Component {
                     <Text></Text>
                 </View>
 
-                <View style={{padding:10}}>
+                <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-around',
+                            padding:10}}>
                     <Ionicons
                         name={this.props.icon}
                         size={30}
@@ -55,17 +58,17 @@ export default class Cards extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height: 160,
-        width: 130,
+        height: 85,
+        width: '80%',
         borderRadius: 30,
-        marginLeft: 20,
         elevation: 5,
-        margin:10,
-        overflow:'hidden'
+        overflow:'hidden',
+        alignSelf: "center",
+        margin: 10
     },
     line: {
         width: '100%',
-        height: 12
+        height: 10
     },
     totalLine: {
         backgroundColor: '#ff3333'
