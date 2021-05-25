@@ -85,6 +85,7 @@ export default function Search({navigation}) {
 
         <View style={styles.flatList}>
                 <FlatList showsVerticalScrollIndicator={false}
+                    keyExtractor={item => item.ID}
                     data={countries}
                     renderItem={({item})=> 
                     <TouchableOpacity 

@@ -18,6 +18,13 @@ const ItemRows = ({ item }) => {
       ]
     );
 
+    function thousands_separators(num)
+      {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
+      }
+
     return (
         <View style={styles.rows}>
             
@@ -37,7 +44,7 @@ const ItemRows = ({ item }) => {
                 </View>
                 <View style={{alignItems:'center'}}>
                     <Text style={styles.totalCasesName}>Confirmed</Text>
-                    <Text style={{...styles.totalCases,color:'#D93B4A'}}>+ {item.TotalConfirmed}</Text>
+                    <Text style={{...styles.totalCases,color:'#D93B4A'}}>+ {thousands_separators(item.TotalConfirmed)}</Text>
                 </View>
             </View>
         

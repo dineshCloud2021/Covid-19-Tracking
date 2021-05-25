@@ -34,6 +34,13 @@ export default function Detail({route,navigation}) {
 
     today = dd+ '-' +mm+ '-' + yyyy;
 
+    function thousands_separators(num)
+      {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
+      }
+
     return (
         <View style={styles.container}>
 
@@ -69,21 +76,21 @@ export default function Detail({route,navigation}) {
                             icon="pulse"
                             title="Total Cases"
                             bg="#FFF"
-                            number={route.params.paramTotal}
+                            number={thousands_separators(route.params.paramTotal)}
                         />
 
                         <Cards
                             icon="medkit"
                             title="Recovered"
                             bg="#FFF"
-                            number={route.params.paramRecover}
+                            number={thousands_separators(route.params.paramRecover)}
                         />
 
                         <Cards
                             icon="heart-dislike-sharp"
                             title="Deaths  "
                             bg="#FFF"
-                            number={route.params.paramDeath}
+                            number={thousands_separators(route.params.paramDeath)}
                         />
                     </ScrollView>
                 </View>
@@ -106,14 +113,14 @@ export default function Detail({route,navigation}) {
                             icon="pulse"
                             title="New Cases"
                             bg="#FFF"
-                            number={route.params.paramNewCa}
+                            number={thousands_separators(route.params.paramNewCa)}
                         />
 
                         <CardsNew
                             icon="medkit"
                             title="New Recovered"
                             bg="#FFF"
-                            number={route.params.paramNewRe}
+                            number={thousands_separators(route.params.paramNewRe)}
                         />
 
 
@@ -123,7 +130,7 @@ export default function Detail({route,navigation}) {
                             icon="nuclear"
                             title="New Deaths"
                             bg="#FFF"
-                            number={route.params.paramNewDe}
+                            number={thousands_separators(route.params.paramNewDe)}
                         />
 
                     </ScrollView>

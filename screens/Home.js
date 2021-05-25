@@ -82,6 +82,12 @@ export default function Home({navigation}) {
         );
       }
 
+      function thousands_separators(num)
+      {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
+      }
 
     return (
         <View style={styles.container}>
@@ -102,21 +108,21 @@ export default function Home({navigation}) {
                         icon="pulse"
                         title="Total Cases"
                         bg="#FFF"
-                        number={data ? data.Global.TotalConfirmed : 0}
+                        number={data ? thousands_separators(data.Global.TotalConfirmed)  : 0}
                     />
 
                     <Cards
                         icon="medkit"
                         title="Recovered"
                         bg="#FFF"
-                        number={data ? data.Global.TotalRecovered : 0}
+                        number={data ? thousands_separators(data.Global.TotalRecovered) : 0}
                     />
 
                     <Cards
                         icon="heart-dislike-sharp"
                         title="Deaths"
                         bg="#FFF"
-                        number={data ? data.Global.TotalDeaths : 0}
+                        number={data ? thousands_separators(data.Global.TotalDeaths) : 0}
                     />
                 </ScrollView>
             </View>
@@ -135,21 +141,21 @@ export default function Home({navigation}) {
                         icon="pulse"
                         title="New Cases"
                         bg="#FFF"
-                        number={data ? data.Global.NewConfirmed : 0}
+                        number={data ? thousands_separators(data.Global.NewConfirmed) : 0}
                     />
 
                     <CardsNew
                         icon="medkit"
                         title="New Recovered"
                         bg="#FFF"
-                        number={data ? data.Global.NewRecovered : 0}
+                        number={data ? thousands_separators(data.Global.NewRecovered) : 0}
                     />
 
                     <CardsNew
                         icon="nuclear"
                         title="New Deaths"
                         bg="#FFF"
-                        number={data ? data.Global.NewDeaths : 0}
+                        number={data ? thousands_separators(data.Global.NewDeaths) : 0}
                     />
                 </ScrollView>
             </View>
@@ -175,6 +181,7 @@ export default function Home({navigation}) {
             <View style={styles.flatList}>
                 <FlatList
                     data={data && data.Countries ?  data.Countries : 0}
+                    keyExtractor={item => item.ID}
                     renderItem={({item})=> 
                     <TouchableOpacity
                     activeOpacity={0.9}
